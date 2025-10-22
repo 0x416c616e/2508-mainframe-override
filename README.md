@@ -43,20 +43,36 @@ feel free to follow the steps below.
 <summary>See walkthrough</summary>
 
 1. Get the username of the person who made the post about EmptyStack in `forum_posts`.
+   SELECT \* FROM forum_posts WHERE date >= '2048-04-01' AND date < '2048-05-01' AND content ILIKE '%dad%' AND content
+   ILIKE '%emptystack%';
 2. Get the last name of the person associated with that username in `forum_accounts`.
+   SELECT \* FROM forum_accounts WHERE username = 'smart-money-44';
 3. Find all other accounts with the same last name.
+   SELECT \* FROM forum_accounts WHERE last_name = 'Steele';
 4. Find all accounts in `emptystack_accounts` with the same last name.
+   SELECT \* FROM emptystack_accounts WHERE last_name = 'Steele';
 5. There will only be one EmptyStack employee with a forum account. Use their credentials
    to access `node mainframe`, which will output a new `sql` file for you to run.
+   Andrew Steele is the only one with the last name 'Steele' who shows up in both tables.
+   EmptyStack: triple-cart-38, password456
 6. Find the message in `emptystack_messages` that mentions a project involving
    self-driving taxis. That message is sent from an admin account and also reveals
    the project code.
+   SELECT \* FROM emptystack_messages WHERE subject ILIKE '%taxi%';
 7. Get the credentials for the admin account from `emptystack_accounts`.
+   SELECT \* FROM emptystack_accounts WHERE username = 'your-boss-99';
 8. Get the ID of the project from `emptystack_projects`.
+   SELECT \* FROM emptystack_projects WHERE CODE = 'TAXI';
 9. Use that information to stop the project: `node mainframe -stop`!
+   id: DczE0v2b
 
 </details>
 
 ## Submission
 
 Please submit the link to your public GitHub repository.
+
+"postgres=# \s
+history is not supported by this installation"
+
+had to redo the entire assignment again even though I'm super busy because I didn't realize I had to not only write stuff down, but also that the psql command history doesn't get saved!!!
